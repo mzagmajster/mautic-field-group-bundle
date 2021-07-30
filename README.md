@@ -48,7 +48,7 @@ Please refer to PHP CS file for details on coding styles.
 From plugin root folder you can also run the following commands during development.
 
 * ```composer lint``` - Checks the PHP syntax.
-* ```composer checkcs``` - Check code formatting && show what should be fixed (does not touch source files).
+* ```composer checkcs``` - Checks code formatting && show what should be fixed (does not touch source files).
 * ```composer fixcs``` - Fixes code formatting (updates soruce files).
 
 ## Deployment
