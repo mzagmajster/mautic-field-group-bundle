@@ -12,6 +12,12 @@ Empty Mautic plugin bundle (zero functionality). Tested on **Mautic 3.3.3**. Go 
 
 ### Installing
 
+Use hooks from .githooks folder on project by executing:
+
+```
+./bin/init.sh
+```
+
 **Initial install** described below.
 
 ```
