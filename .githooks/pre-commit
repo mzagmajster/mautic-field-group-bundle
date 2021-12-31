@@ -8,7 +8,7 @@
 # To enable this hook, rename this file to "pre-commit".
 #
 
-composer ffix
+composer fixcs
 
 # Add the changes from CS Fixer back to the git index:
 git add $(git diff --cached --name-only)
