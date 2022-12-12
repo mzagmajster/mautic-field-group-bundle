@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MauticPlugin\MauticHelloWorldBundle;
+namespace MauticPlugin\HelloWorldBundle;
 
 use Doctrine\DBAL\Schema\Schema;
 use Mautic\CoreBundle\Factory\MauticFactory;
