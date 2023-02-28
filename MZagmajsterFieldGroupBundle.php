@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace MauticPlugin\HelloWorldBundle;
+namespace MauticPlugin\MZagmajsterFieldGroupBundle;
 
 use Doctrine\DBAL\Schema\Schema;
 use Mautic\CoreBundle\Factory\MauticFactory;
 use Mautic\PluginBundle\Bundle\PluginBundleBase;
 use Mautic\PluginBundle\Entity\Plugin;
 
-class HelloWorldBundle extends PluginBundleBase
+class MZagmajsterFieldGroupBundle extends PluginBundleBase
 {
     /**
      * Called by PluginController::reloadAction when adding a new plugin that's not already installed.

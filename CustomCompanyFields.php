@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace MauticPlugin\HelloWorldBundle;
+namespace MauticPlugin\MZagmajsterFieldGroupBundle;
 
 /**
  * Mautic Custom Ccmpany Fields

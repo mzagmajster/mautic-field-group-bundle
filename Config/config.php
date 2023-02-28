@@ -3,8 +3,8 @@
 declare(strict_types=1);
 
 return [
-    'name'        => 'Hello World',
-    'description' => 'Mautic Plugin Boilerplate',
+    'name'        => 'MZagmajsterFieldGroupBundle',
+    'description' => 'Enable adding custom field groups via GUI',
     'version'     => '0.0.0',
     'author'      => 'Matic Zagmajster',
 
@@ -25,6 +25,15 @@ return [
         ],  // end services.integrations
 
         'forms' => [
+            'mautic.mz.form.extension.field_group_type' => [
+                'class'        => MauticPlugin\MZagmajsterFieldGroupBundle\Form\Type\FieldGroupExtensionType::class,
+                'arguments'    => [],
+                'tag'          => 'form.type_extension',
+                'tagArguments' => [
+                    'extended_type' => Mautic\LeadBundle\Form\Type\FieldType::class,
+                ],
+            ],
+
         ],  // end services.forms
 
         'helpers' => [
