@@ -1,14 +1,15 @@
 <?php
+
 declare(strict_types=1);
 
 namespace MauticPlugin\MZagmajsterFieldGroupBundle\Form\Type;
 
+use Mautic\CoreBundle\Helper\CoreParametersHelper;
 use Mautic\LeadBundle\Form\Type\FieldType;
 use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Mautic\CoreBundle\Helper\CoreParametersHelper;
 
 class FieldGroupExtensionType extends AbstractTypeExtension
 {
@@ -36,7 +37,7 @@ class FieldGroupExtensionType extends AbstractTypeExtension
             ChoiceType::class,
             [
                 'choices'           => $this->coreParametersHelper->get('mz_fgb_field_groups'),
-                'attr' => [
+                'attr'              => [
                     'class'   => 'form-control',
                     'tooltip' => 'mautic.lead.field.form.group.help',
                 ],

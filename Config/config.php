@@ -28,14 +28,13 @@ return [
             'mautic.mz.form.extension.field_group_type' => [
                 'class'        => MauticPlugin\MZagmajsterFieldGroupBundle\Form\Type\FieldGroupExtensionType::class,
                 'arguments'    => [
-                    'mautic.helper.core_parameters'
+                    'mautic.helper.core_parameters',
                 ],
                 'tag'          => 'form.type_extension',
                 'tagArguments' => [
                     'extended_type' => Mautic\LeadBundle\Form\Type\FieldType::class,
                 ],
             ],
-
         ],  // end services.forms
 
         'helpers' => [
@@ -52,10 +51,9 @@ return [
             'mautic.lead.field.group.core'              => 'core',
             'mautic.lead.field.group.social'            => 'social',
             'mautic.lead.field.group.personal'          => 'personal',
-            'mautic.lead.field.group.professional'      => 'professional'
+            'mautic.lead.field.group.professional'      => 'professional',
 
-            /** Add new groups. */
-        ]
-    ]
-    
+        /** Add new groups. */
+        ],
+    ],
 ];
