@@ -29,7 +29,7 @@ cd <mautic-root-folder>
 rm -rf var/cache/dev/* var/cache/prod/*
 cd plugins
 git clone <repo-url> MZagmajsterFieldGroupBundle
-cd <mautic-root-folder>
+cd MZagmajsterFieldGroupBundle
 composer install  # You only need this druing development.
 php bin/console mautic:plugins:install --dev  # You should get a message saying one or more plugins have been installed in terminal.
 ```
