@@ -34,7 +34,7 @@ class MZagmajsterFieldGroupBundle extends PluginBundleBase
      *
      * @throws \Exception
      */
-    public static function onPluginUpdate(Plugin $plugin, MauticFactory $factory, $metadata = null, Schema $installedSchema = null)
+    /*public static function onPluginUpdate(Plugin $plugin, MauticFactory $factory, $metadata = null, Schema $installedSchema = null)
     {
-    }
+    }*/
 }

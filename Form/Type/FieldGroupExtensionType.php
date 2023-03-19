@@ -8,11 +8,19 @@ use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Mautic\CoreBundle\Helper\CoreParametersHelper;
 
 class FieldGroupExtensionType extends AbstractTypeExtension
 {
-    public function __construct()
-    {}
+    /**
+     * @var CoreParametersHelper;
+     */
+    private $coreParametersHelper;
+
+    public function __construct(CoreParametersHelper $coreParametersHelper)
+    {
+        $this->coreParametersHelper = $coreParametersHelper;
+    }
 
     public function getExtendedType()
     {
@@ -27,14 +35,7 @@ class FieldGroupExtensionType extends AbstractTypeExtension
             'group',
             ChoiceType::class,
             [
-                'choices'           => [
-                    'mautic.lead.field.group.core'              => 'core',
-                    'mautic.lead.field.group.social'            => 'social',
-                    'mautic.lead.field.group.personal'          => 'personal',
-                    'mautic.lead.field.group.professional'      => 'professional',
-                    'mautic.mz.field.group.test1'               => 'test1',
-                    'mautic.mz.field.group.test2'               => 'test2',
-                ],
+                'choices'           => $this->coreParametersHelper->get('mz_fgb_field_groups'),
                 'attr' => [
                     'class'   => 'form-control',
                     'tooltip' => 'mautic.lead.field.form.group.help',
