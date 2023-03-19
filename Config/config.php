@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 return [
     'name'        => 'MZagmajsterFieldGroupBundle',
-    'description' => 'Enable adding custom field groups via GUI',
-    'version'     => '0.0.0',
+    'description' => 'Enable adding custom field groups via GUI<br /> <a href="https://maticzagmajster.ddns.net/">Website</a>',
+    'version'     => '0.0.1',
     'author'      => 'Matic Zagmajster',
 
     'routes'      => [
@@ -53,7 +53,7 @@ return [
             'mautic.lead.field.group.personal'          => 'personal',
             'mautic.lead.field.group.professional'      => 'professional',
 
-        /** Add new groups. */
+            /** Add new groups. */
         ],
     ],
 ];
