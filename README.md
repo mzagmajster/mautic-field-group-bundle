@@ -106,7 +106,9 @@ The above example will add one new field group named: "Test Field Group" in addi
 
 ## Contributing
 
-Please read ```CONTRIBUTING.md``` for details on our code of conduct, and the process for submitting pull requests to us.
+- If you have a suggestion for the feature or improvement consider opening an issue on GitHub (just make sure the same issue does not already exist).
+- If you want, you can open a pull request and I will make an effort to merge it.
+- Finally if this project was helpful to you consider supporting it with a donation via PayPal. Thank you!
 
 ## Versioning
 
@@ -114,10 +116,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-- If you have a suggestion for the feature or improvement consider opening an issue on GitHub (just make sure the same issue does not already exists).
-- If you want, you can open a pull request and I will make an effort to merge it.
-- Finally if this project was helpful to you consider supporting it with a donation via PayPal. Thank you!
-
+Content in this project was provided by [Matic Zagmajster](http://maticzagmajster.ddns.net/). For more information please see ```AUTHORS``` file.
 
 ## Acknowledgments
 
