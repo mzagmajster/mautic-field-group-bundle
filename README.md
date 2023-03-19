@@ -108,7 +108,7 @@ The above example will add one new field group named: "Test Field Group" in addi
 
 - If you have a suggestion for the feature or improvement consider opening an issue on GitHub (just make sure the same issue does not already exist).
 - If you want, you can open a pull request and I will make an effort to merge it.
-- Finally if this project was helpful to you consider supporting it with a donation via PayPal. Thank you!
+- Finally if this project was helpful to you consider supporting it with a donation via [PayPal](https://paypal.me/maticzagmajster). Thank you!
 
 ## Versioning
 
