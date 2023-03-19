@@ -4,7 +4,7 @@ Add new field groups via plugin configuration.
 
 (no gui yet)
 
-Please find procedure to add new field groups to Mautic below.
+Please find procedure to add new field groups to Mautic below (sections: Installing, Deployment).
 
 ## Getting Started
 
