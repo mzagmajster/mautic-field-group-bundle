@@ -9,9 +9,21 @@ return [
     'author'      => 'Matic Zagmajster',
 
     'routes'      => [
-        'main'   => [],  // end routes.main
+        'main'   => [
+            'mautic_mzfgb.field_group_index' => [
+                'path'       => '/field-groups/{page}',
+                'controller' => 'MauticPlugin\MZagmajsterFieldGroupBundle\Controller\FieldGroupStandardController::indexAction',
+            ],
+
+            'mautic_mzfgb.field_group_action' => [
+                'path'       => '/field-groups/{objectAction}/{objectId}',
+                'controller' => 'MauticPlugin\MZagmajsterFieldGroupBundle\Controller\FieldGroupStandardController::executeAction',
+            ],
+        ],  // end routes.main
+
         'public' => [],  // end routes.public
-        'api'    => [
+        
+        'api'    => [ 
             'mautic_api_getfieldGroup' => [
                 'class'         => MauticPlugin\MZagmajsterFieldGroupBundle\Controller\FieldGroupApiController::class,
                 'path'          => 'mz/field-groups/{objectId}',
@@ -33,7 +45,6 @@ return [
             'mautic_api_patchfieldGroup' => [
                 'class'         => MauticPlugin\MZagmajsterFieldGroupBundle\Controller\FieldGroupApiController::class,
                 'path'          => 'mz/field-groups/{objectId}',
-                // 'controller'    => 'MZagmajsterFieldGroupBundle::FieldGroupApi::index',
                 'controller' => 'MauticPlugin\MZagmajsterFieldGroupBundle\Controller\FieldGroupApiController::editAction',
                 'method'        => 'PATCH',
                 'defaults'      => [
@@ -44,7 +55,6 @@ return [
             'mautic_api_deletefieldGroup' => [
                 'class'         => MauticPlugin\MZagmajsterFieldGroupBundle\Controller\FieldGroupApiController::class,
                 'path'          => 'mz/field-groups/{objectId}',
-                // 'controller'    => 'MZagmajsterFieldGroupBundle::FieldGroupApi::index',
                 'controller' => 'MauticPlugin\MZagmajsterFieldGroupBundle\Controller\FieldGroupApiController::deleteAction',
                 'method'        => 'DELETE',
                 'defaults'      => [
@@ -61,7 +71,7 @@ return [
         ],  // end services.events
 
         'models' => [
-            'mautic.mz.model.field_group' => [
+            'mautic.mzfgb.model.field_group' => [
                 'class' => MauticPlugin\MZagmajsterFieldGroupBundle\Model\FieldGroupModel::class,
                 'arguments' => []
             ]
@@ -76,7 +86,7 @@ return [
                 'class'        => MauticPlugin\MZagmajsterFieldGroupBundle\Form\Type\FieldGroupExtensionType::class,
                 'arguments'    => [
                     'mautic.helper.core_parameters',
-                    'mautic.mz.model.field_group'
+                    'mautic.mzfgb.model.field_group'
                 ],
                 'tag'          => 'form.type_extension',
                 'tagArguments' => [
@@ -99,7 +109,17 @@ return [
         ],  // end services.other
     ],
 
-    'menu'        => [],  // end menu
+    'menu'        => [
+        'admin' => [
+            'mautic.mzfgb.menu.root' => [
+                'route'     => 'mautic_mzfgb.field_group_index',
+                'iconClass' => 'fa-list',
+                'id'        => 'mautic_mzfgb.field_group_index',
+                'access'    => 'admin',
+                'checks'    => [],
+            ],
+        ]
+    ],  // end menu
 
     'parameters' => [],  // end parameters
 ];
