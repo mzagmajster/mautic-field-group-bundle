@@ -18,6 +18,8 @@ use MauticPlugin\MZagmajsterFieldGroupBundle\Entity\FieldGroupRepository;
  */
 class FieldGroup extends FormEntity
 {
+    const MAUTIC_FIELD_GROUP_TRANSLATION_BASE = 'mautic.lead.field.group.';
+
     /**
      * @var int
      */
@@ -56,6 +58,35 @@ class FieldGroup extends FormEntity
             ])
             ->build();
     }
+
+    public function loadDefaultGroups(): array {
+        return [
+            'mautic.lead.field.group.core'              => 'core',
+            'mautic.lead.field.group.social'            => 'social',
+            'mautic.lead.field.group.personal'          => 'personal',
+            'mautic.lead.field.group.professional'      => 'professional',
+        ];
+    }
+
+    /**
+     * Computed translation
+     * @return string
+     */
+    public function getCompTranslation(): string {
+        $translation = self::MAUTIC_FIELD_GROUP_TRANSLATION_BASE;
+        $translation .= $this->getCompName();
+        return $translation;
+    }
+
+    /**
+     * Computed name
+     * @return string
+     */
+    public function getCompName(): string {
+        return strtolower($this->name);
+    }
+
+    // Entity getters/setters
 
     public function setId(?int $id): self {
         $this->id = $id;

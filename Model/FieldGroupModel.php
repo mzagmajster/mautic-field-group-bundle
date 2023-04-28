@@ -8,6 +8,7 @@ use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
 
 class FieldGroupModel extends FormModel
 {
+    const MAUTIC_FIELD_GROUP_TRANSLATION_BASE = 'mautic.lead.field.group.';
 
     public function getRepository()
     {
@@ -16,7 +17,7 @@ class FieldGroupModel extends FormModel
 
     public function getPermissionBase()
     {
-        return 'lead:leads';
+        return 'admin:full';
     }
 
     public function createForm($entity, $formFactory, $action = null, $options = [])
@@ -61,6 +62,21 @@ class FieldGroupModel extends FormModel
     }
 
     public function getGroups() {
-        return $this->getDefaultGroups();
+
+        $groups = $this->getDefaultGroups();
+        $dbRecords = $this->getEntities([
+            'ignore_paginator' => false
+        ]);
+
+        foreach ($dbRecords as $record) {
+            $translation =  $record->getCompTranslation();
+
+            if (!isset($groups[$translation])) {
+                $groups[$translation] = $record->getCompName();
+            }
+        }
+
+        return $groups;
+
     }
 }
