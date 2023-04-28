@@ -25,9 +25,7 @@ if ('index' == $tmpl) {
                         'checkall'        => 'true',
                         'target'          => '#fieldGroupTable',
                         'routeBase'       => 'mzfgb.field_group',
-                        'templateButtons' => [
-                            'delete' => true,
-                        ],
+                        'templateButtons' => [],
                     ]
                 );
 
