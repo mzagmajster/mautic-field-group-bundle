@@ -10,6 +10,7 @@ use Mautic\CoreBundle\Entity\FormEntity;
 use Mautic\CoreBundle\Helper\IntHelper;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
+use MauticPlugin\MZagmajsterFieldGroupBundle\Entity\FieldGroupRepository;
 
 /**
  * @ORM\Entity
@@ -19,34 +20,51 @@ class FieldGroup extends FormEntity
 {
     /**
      * @var int
-     * 
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
-     * @ORM\Column(type="integer")
      */
     private $id;
 
     /**
      * @var string
-     * 
-     * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
      * @var string|null
-     * 
-     * @ORM\Column(type="text", nullable=true)
      */
     private $description;
+
+    public static function loadValidatorMetadata(ClassMetadata $metadata)
+    {
+
+    }
 
     public static function loadMetadata(ORM\ClassMetadata $metadata)
     {
         $builder = new ClassMetadataBuilder($metadata);
 
         $builder->setTable('mz_fgb_field_groups')
-            ->setCustomRepositoryClass(PointRepository::class);
+            ->setCustomRepositoryClass(FieldGroupRepository::class);
         $builder->addIdColumns();
+    }
+
+    public static function loadApiMetadata(ApiMetadataDriver $metadata) {
+        $metadata->setGroupPrefix('fieldGroupBasic')
+            ->addListProperties([
+                'id',
+                'name',
+                'description'
+            ])
+            ->build();
+    }
+
+    public function setId(?int $id): self {
+        $this->id = $id;
+        
+        return $this;
+    }
+
+    public function getId(): ?int {
+        return $this->id;
     }
 
     public function setName(string $name): self

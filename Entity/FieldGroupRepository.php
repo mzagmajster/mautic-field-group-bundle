@@ -1,7 +1,5 @@
 <?php
 
-// src/Repository/FieldGroupsRepository.php
-
 namespace MauticPlugin\MZagmajsterFieldGroupBundle\Entity;
 
 
@@ -9,7 +7,7 @@ use Mautic\CoreBundle\Entity\CommonRepository;
 
 class FieldGroupRepository extends CommonRepository
 {
-    public function getEntities(array $args = []): array
+    public function getEntities(array $args = [])
     {
         $q = $this->_em
             ->createQueryBuilder()
