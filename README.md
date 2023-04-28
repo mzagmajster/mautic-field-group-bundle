@@ -71,33 +71,18 @@ From plugin root folder you can also run the following commands during developme
 
 * You do not have to install any composer packages inside plugin folder since we only use it during development.
 * When you are deploying the plugin make sure you call ```php bin/console``` command without --dev switch.
-* Add new field groups inside ```Config/config.php``` file to parameters array, after comment "Add new groups." For example:
-
-```
-'parameters' => [
-        'mz_fgb_field_groups' => [
-            'mautic.lead.field.group.core'              => 'core',
-            'mautic.lead.field.group.social'            => 'social',
-            'mautic.lead.field.group.personal'          => 'personal',
-            'mautic.lead.field.group.professional'      => 'professional',
-
-            /** Add new groups. */
-            'Test Field Group' => 'test1'
-        ],
-    ],
-```
-
-The above example will add one new field group named: "Test Field Group" in addition to Mautic core groups.
-
-**ATTENTION: Once you are happy with field group configuration please back it up somewhere, as there is a chance plugin config file will change in future updates and overwrite your configuration, when this happens you will need to put configuration back into the file.**
+* Open Configuration menu on the right Side -> Custom Field Groups
+* Add a group(s) you want for example: "mygroup", optionally add a description, save it.
+* Update the translation file in ```<plugin-root>/Translations/messages.ini```
 
 ## Changelog
 
-[No changelog yet.]
+* **0.0.3** - Enable new groups via file-based plugin configuration.
+* **1.0.0** - Store custom groups in database, add GUI & API
 
 ## Documentation
 
-[No documentation yet.]
+For additional documentation check the docs folder in this repository.
 
 ## Built With
 
@@ -120,6 +105,7 @@ Content in this project was provided by [Matic Zagmajster](http://maticzagmajste
 
 ## Acknowledgments
 
+* Thanks to Adra Cloud for all the help on this project.
 * Thanks to entire Mautic Community for providing awesome marketing automation tool.
 
 
