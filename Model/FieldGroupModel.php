@@ -31,7 +31,11 @@ class FieldGroupModel extends FormModel
 
         $options['allow_extra_fields'] = true;
 
-        return $formFactory->create('MauticPlugin\MZagmajsterFieldGroupBundle\Form\Type\MZFieldGroupType', $entity, $options);
+        return $formFactory->create(
+            'MauticPlugin\MZagmajsterFieldGroupBundle\Form\Type\MZFieldGroupType', 
+            $entity, 
+            $options
+        );
     }
 
     public function getEntity($id = null)
