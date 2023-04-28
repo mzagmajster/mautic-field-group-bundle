@@ -38,6 +38,7 @@ class MZFieldGroupType extends AbstractType
                 'label'      => 'mautic.core.name',
                 'label_attr' => ['class' => 'control-label'],
                 'attr'       => ['class' => 'form-control'],
+                'required' => true,
             ]
         );
 

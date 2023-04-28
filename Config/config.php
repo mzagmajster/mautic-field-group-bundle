@@ -112,6 +112,7 @@ return [
     'menu'        => [
         'admin' => [
             'mautic.mzfgb.menu.root' => [
+                'priority'  => 60,
                 'route'     => 'mautic_mzfgb.field_group_index',
                 'iconClass' => 'fa-list',
                 'id'        => 'mautic_mzfgb.field_group_index',

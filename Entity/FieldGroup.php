@@ -12,10 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Validator\Mapping\ClassMetadata;
 use MauticPlugin\MZagmajsterFieldGroupBundle\Entity\FieldGroupRepository;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="field_groups")
- */
+
 class FieldGroup extends FormEntity
 {
     const MAUTIC_FIELD_GROUP_TRANSLATION_BASE = 'mautic.lead.field.group.';
@@ -37,6 +34,19 @@ class FieldGroup extends FormEntity
 
     public static function loadValidatorMetadata(ClassMetadata $metadata)
     {
+        $metadata->addPropertyConstraint('name', new Assert\NotBlank(
+            ['message' => 'mautic.core.name.required']
+          )
+        );
+
+        $metadata->addPropertyConstraint('name', new Assert\Regex(
+            [
+                'pattern' => "/[a-z]/",
+                'match' => true,
+                'message' => 'mautic.mzfgb.name.lowercase'
+            ]
+          )
+        );
 
     }
 
@@ -82,7 +92,7 @@ class FieldGroup extends FormEntity
      * Computed name
      * @return string
      */
-    public function getCompName(): string {
+    public function getCompName(): ?string {
         return strtolower($this->name);
     }
 
@@ -98,14 +108,14 @@ class FieldGroup extends FormEntity
         return $this->id;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
