@@ -24,16 +24,6 @@ echo $view['form']->start($form);
         <!-- container -->
         <div class="col-md-9 bg-auto height-auto bdr-r">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="pa-md">
-                        <div class="alert alert-warning">
-                            <?php echo $view['translator']->trans('mautic.mzfgb.update.translation'); ?>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="row">
                 <div class="col-md-6">
                     <div class="pa-md">
                         <?php
