@@ -41,9 +41,9 @@ class FieldGroup extends FormEntity
 
         $metadata->addPropertyConstraint('name', new Assert\Regex(
             [
-                'pattern' => "/[a-z]/",
+                'pattern' => "/^[a-zA-Z\s]+$/",
                 'match' => true,
-                'message' => 'mautic.mzfgb.name.lowercase'
+                'message' => 'mautic.mzfgb.name.validation'
             ]
           )
         );
@@ -69,23 +69,17 @@ class FieldGroup extends FormEntity
             ->build();
     }
 
-    public function loadDefaultGroups(): array {
-        return [
-            'mautic.lead.field.group.core'              => 'core',
-            'mautic.lead.field.group.social'            => 'social',
-            'mautic.lead.field.group.personal'          => 'personal',
-            'mautic.lead.field.group.professional'      => 'professional',
-        ];
-    }
-
     /**
      * Computed translation
      * @return string
      */
     public function getCompTranslation(): string {
-        $translation = self::MAUTIC_FIELD_GROUP_TRANSLATION_BASE;
-        $translation .= $this->getCompName();
-        return $translation;
+        $displayName = $this->name;
+        if ($displayName === null) {
+            return '';
+        }
+
+        return $displayName;
     }
 
     /**
@@ -93,7 +87,20 @@ class FieldGroup extends FormEntity
      * @return string
      */
     public function getCompName(): ?string {
-        return strtolower($this->name);
+        if ($this->name === null) {
+            return null;
+        }
+
+        return strtolower(
+            trim(
+                preg_replace(
+                    '/[^A-Za-z0-9-]+/',
+                     '',
+                      $this->name
+                ),
+                ''
+            )
+        );
     }
 
     // Entity getters/setters

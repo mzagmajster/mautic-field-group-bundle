@@ -68,6 +68,13 @@ return [
 
     'services'    => [
         'events' => [
+            'mautic.mzfgb.subcriber.custom_template' => [
+                'class' => MauticPlugin\MZagmajsterFieldGroupBundle\EventListener\CustomTemplateSubscriber::class,
+                'arguments' => [
+                    'mautic.mzfgb.model.field_group'
+                ]
+            ]
+
         ],  // end services.events
 
         'models' => [

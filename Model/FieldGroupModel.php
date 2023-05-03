@@ -5,6 +5,7 @@ namespace MauticPlugin\MZagmajsterFieldGroupBundle\Model;
 use Mautic\CoreBundle\Model\FormModel;
 use MauticPlugin\MZagmajsterFieldGroupBundle\Entity\FieldGroup;
 use Symfony\Component\HttpKernel\Exception\MethodNotAllowedHttpException;
+use Symfony\Component\Translation\TranslatorInterface;
 
 class FieldGroupModel extends FormModel
 {
@@ -57,11 +58,11 @@ class FieldGroupModel extends FormModel
             'mautic.lead.field.group.core'              => 'core',
             'mautic.lead.field.group.social'            => 'social',
             'mautic.lead.field.group.personal'          => 'personal',
-            'mautic.lead.field.group.professional'      => 'professional',
+            'mautic.lead.field.group.professional'      => 'professional'
         ];
     }
 
-    public function getGroups() {
+    public function getGroups(): array {
 
         $groups = $this->getDefaultGroups();
         $dbRecords = $this->getEntities([
@@ -78,5 +79,16 @@ class FieldGroupModel extends FormModel
 
         return $groups;
 
+    }
+
+    public function getTranslatedGroups(): array {
+        $groups = $this->getGroups();
+        $translatedGroups = [];
+
+        foreach ($groups as $transId => $groupId) {
+            $translatedGroups[$groupId] = $this->translator->trans($transId);
+        }
+
+        return $translatedGroups;
     }
 }
