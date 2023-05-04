@@ -84,7 +84,7 @@ $img = $view['lead_avatar']->getAvatar($lead);
                         <div class="tab-pane fade<?php if (0 === $key): echo ' in active'; endif; ?> bdr-rds-0 bdr-w-0"
                              id="<?php echo $group; ?>">
                             <div class="pa-md bg-auto bg-light-xs bdr-b">
-                                <h4 class="fw-sb"><?php echo $view['translator']->trans('mautic.lead.field.group.'.$group); ?></h4>
+                                <h4 class="fw-sb"><?php echo $mzfgbTranslatedGroups[$group]; ?></h4>
                             </div>
                             <div class="pa-md">
                                 <?php if ('core' == $group): ?>
