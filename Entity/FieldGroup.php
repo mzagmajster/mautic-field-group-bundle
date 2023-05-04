@@ -43,7 +43,7 @@ class FieldGroup extends FormEntity
             [
                 'pattern' => "/^[a-zA-Z\s]+$/",
                 'match' => true,
-                'message' => 'mautic.mzfgb.name.validation'
+                'message' => 'mautic.mzfgb.name.help'
             ]
           )
         );
