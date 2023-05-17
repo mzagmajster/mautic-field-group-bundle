@@ -1,0 +1,6 @@
+!.gitignore
+!.htaccess
+!.gitkeep
+vendor/*
+/.php-cs-fixer.cache
+/.php_cs.cache

@@ -1,92 +1,112 @@
-# mautic-field-groups-plugin
+# Mautic MZagmajster Field Group Bundle
+
+Add new field groups via plugin configuration.
+
+(no gui yet)
+
+Please find procedure to add new field groups to Mautic below (sections: Installing, Deployment).
+
+## Getting Started
+
+### Prerequisites
+
+* Composer 1
+* Mautic 4
 
 
+### Installing
 
-## Getting started
-
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
-
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
-
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+Use hooks from .githooks folder on project by executing:
 
 ```
-cd existing_repo
-git remote add origin https://gitlab.com/adra-network/mautic-field-groups-plugin.git
-git branch -M main
-git push -uf origin main
+./bin/init.sh
 ```
 
-## Integrate with your tools
+**Initial install** described below.
 
-- [ ] [Set up project integrations](https://gitlab.com/adra-network/mautic-field-groups-plugin/-/settings/integrations)
+```
+cd <mautic-root-folder>
+rm -rf var/cache/dev/* var/cache/prod/*
+cd plugins
+git clone <repo-url> MZagmajsterFieldGroupBundle
+cd MZagmajsterFieldGroupBundle
+composer install  # You only need this druing development.
+php bin/console mautic:plugins:install --dev  # You should get a message saying one or more plugins have been installed in terminal.
+```
 
-## Collaborate with your team
+Typical **update** of plugin source code described below.
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Automatically merge when pipeline succeeds](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+* Backup your current ```Config/config.php``` file as you will have to set the parameters again after you update the plugin´s source code.
 
-## Test and Deploy
+* Make sure plugin root folder is clean from git´s point of view and update the source code.
 
-Use the built-in continuous integration in GitLab.
+```
+cd <mautic-root-folder>
+cd plugins/MZagmajsterFieldGroupBundle
+git pull origin <branch>
+```
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing(SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+* Put parameters from your backup file back in current Config/config.php file and reload the plugin.
 
-***
+```
+rm -rf var/cache/dev/* var/cache/prod/*
+php bin/console mautic:plugins:reload --env=dev
+```
 
-# Editing this README
+## Running the tests
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thank you to [makeareadme.com](https://www.makeareadme.com/) for this template.
+[No tests yet.]
 
-## Suggestions for a good README
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+### Coding style
 
-## Name
-Choose a self-explaining name for your project.
+Please refer to PHP CS file for details on coding styles.
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+From plugin root folder you can also run the following commands during development.
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+* ```composer lint``` - Checks the PHP syntax.
+* ```composer checkcs``` - Checks code formatting && show what should be fixed (does not touch source files).
+* ```composer fixcs``` - Fixes code formatting (updates soruce files).
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+## Deployment
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+* You do not have to install any composer packages inside plugin folder since we only use it during development.
+* When you are deploying the plugin make sure you call ```php bin/console``` command without --dev switch.
+* Open Configuration menu on the right Side -> Custom Field Groups
+* Add a group(s) you want for example: "mygroup", optionally add a description, save it.
+* Update the translation file in ```<plugin-root>/Translations/messages.ini```
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+## Changelog
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+* **0.0.3** - Enable new groups via file-based plugin configuration.
+* **1.0.0** - Store custom groups in database, add GUI & API
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+## Documentation
+
+For additional documentation check the docs folder in this repository.
+
+## Built With
+
+* [Mautic](https://github.com/mautic/) - Open Source Marketing Automation Tool
+* [Composer](https://getcomposer.org/) - Dependency Management
 
 ## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+- If you have a suggestion for the feature or improvement consider opening an issue on GitHub (just make sure the same issue does not already exist).
+- If you want, you can open a pull request and I will make an effort to merge it.
+- Finally if this project was helpful to you consider supporting it with a donation via [PayPal](https://paypal.me/maticzagmajster). Thank you!
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+## Versioning
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the tags on this repository. 
 
-## License
-For open source projects, say how it is licensed.
+## Authors
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Content in this project was provided by [Matic Zagmajster](http://maticzagmajster.ddns.net/). For more information please see ```AUTHORS``` file.
+
+## Acknowledgments
+
+* Thanks to Adra Cloud for all the help on this project.
+* Thanks to entire Mautic Community for providing awesome marketing automation tool.
+
+
+
