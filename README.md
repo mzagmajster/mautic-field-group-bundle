@@ -2,8 +2,6 @@
 
 Add new field groups via plugin configuration.
 
-(no gui yet)
-
 Please find procedure to add new field groups to Mautic below (sections: Installing, Deployment).
 
 ## Getting Started
@@ -45,8 +43,6 @@ cd <mautic-root-folder>
 cd plugins/MZagmajsterFieldGroupBundle
 git pull origin <branch>
 ```
-
-* Put parameters from your backup file back in current Config/config.php file and reload the plugin.
 
 ```
 rm -rf var/cache/dev/* var/cache/prod/*
@@ -93,7 +89,7 @@ For additional documentation check the docs folder in this repository.
 
 - If you have a suggestion for the feature or improvement consider opening an issue on GitHub (just make sure the same issue does not already exist).
 - If you want, you can open a pull request and I will make an effort to merge it.
-- Finally if this project was helpful to you consider supporting it with a donation via [PayPal](https://paypal.me/maticzagmajster). Thank you!
+- Finally if this project was helpful to you consider supporting it with a donation via [PayPal](https://paypal.me/maticzagmajster). **Thank you!**
 
 ## Versioning
 
