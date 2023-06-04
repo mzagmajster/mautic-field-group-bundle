@@ -101,7 +101,6 @@ Content in this project was provided by [Matic Zagmajster](http://maticzagmajste
 
 ## Acknowledgments
 
-* Thanks to Adra Cloud for all the help on this project.
 * Thanks to entire Mautic Community for providing awesome marketing automation tool.
 
 
