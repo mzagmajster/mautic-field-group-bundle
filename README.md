@@ -8,7 +8,7 @@ Please find procedure to add new field groups to Mautic below (sections: Install
 
 ### Prerequisites
 
-* Composer 1
+* Composer 2
 * Mautic 4
 
 
