@@ -26,7 +26,13 @@ class CustomTemplateSubscriber implements EventSubscriberInterface
         $this->templatesToReplace = [
             'MauticLeadBundle:Lead:lead.html.php',
             'MauticLeadBundle:Lead:form.html.php',
-            'MauticLeadBundle:Field:list.html.php'
+            'MauticLeadBundle:Field:list.html.php',
+
+            'MauticLeadBundle:Company:company.html.php',
+            'MauticLeadBundle:Company:form_embded.html.php',
+            'MauticLeadBundle:Company:form_fields.html.php',
+            'MauticLeadBundle:Company:form_standalone.html.php',
+
         ];
     }
 
@@ -43,6 +49,7 @@ class CustomTemplateSubscriber implements EventSubscriberInterface
     {
 
         $currentTemplate = $event->getTemplate();
+        //die($currentTemplate);
         if (!in_array($currentTemplate, $this->templatesToReplace)) {
             return;
         }
@@ -56,6 +63,14 @@ class CustomTemplateSubscriber implements EventSubscriberInterface
             $event->setTemplate('MZagmajsterFieldGroupBundle:Lead:form.html.php');
         } elseif ('MauticLeadBundle:Field:list.html.php' == $event->getTemplate()) {
             $event->setTemplate('MZagmajsterFieldGroupBundle:Field:list.html.php');
+        } elseif ('MauticLeadBundle:Company:company.html.php' == $event->getTemplate()) {
+            $event->setTemplate('MZagmajsterFieldGroupBundle:Company:company.html.php');
+        } elseif ('MauticLeadBundle:Company:form_embded.html.php' == $event->getTemplate()) {
+            $event->setTemplate('MZagmajsterFieldGroupBundle:Company:form_embded.html.php');
+        } elseif ('MauticLeadBundle:Company:form_fields.html.php' == $event->getTemplate()) {
+            $event->setTemplate('MZagmajsterFieldGroupBundle:Company:form_fields.html.php');
+        } elseif ('MauticLeadBundle:Company:form_standalone.html.php' == $event->getTemplate()) {
+            $event->setTemplate('MZagmajsterFieldGroupBundle:Company:form_standalone.html.php');
         }
 
         $event->setVars($vars);
