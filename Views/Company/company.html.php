@@ -18,7 +18,13 @@ $view['slots']->set(
     $view->escape($company->getName())
 );
 
-$groups = array_keys($fields);
+// Preserve the order of the default groups.
+$groups = [];
+foreach ($mzfgbTranslatedGroups as $group => $translation) {
+    if (isset($fields[$group])) {
+        $groups[] = $group;
+    }
+}
 $edit   = $view['security']->hasEntityAccess(
     $permissions['lead:leads:editown'],
     $permissions['lead:leads:editother'],

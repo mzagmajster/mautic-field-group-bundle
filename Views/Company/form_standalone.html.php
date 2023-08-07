@@ -33,6 +33,14 @@ $view['slots']->set(
     )
 );
 echo $view['form']->start($form);
+
+// Preserve the order of the default groups.
+$groups = [];
+foreach ($mzfgbTranslatedGroups as $group => $translation) {
+    if (isset($fields[$group])) {
+        $groups[] = $group;
+    }
+}
 ?>
     <div class="box-layout">
         <div class="col-md-3 bg-white height-auto">

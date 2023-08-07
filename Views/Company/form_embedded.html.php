@@ -8,6 +8,14 @@
  *
  * @license     GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html
  */
+
+// Preserve the order of the default groups.
+$groups = [];
+foreach ($mzfgbTranslatedGroups as $group => $translation) {
+    if (isset($fields[$group])) {
+        $groups[] = $group;
+    }
+}
 ?>
 
 <?php echo $view['form']->start($form); ?>

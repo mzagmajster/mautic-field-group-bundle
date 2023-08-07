@@ -10,6 +10,14 @@
  */
 $halfSize = (empty($embedded)) ? 4 : 6;
 $fullSize = (empty($embedded)) ? 8 : 12;
+
+// Preserve the order of the default groups.
+$groups = [];
+foreach ($mzfgbTranslatedGroups as $group => $translation) {
+    if (isset($fields[$group])) {
+        $groups[] = $group;
+    }
+}
 ?>
 
     <!-- pane -->

@@ -16,8 +16,16 @@ $header = ($lead->getId()) ?
 $view['slots']->set('headerTitle', $header);
 $view['slots']->set('mauticContent', 'lead');
 
-$groups = array_keys($fields);
-sort($groups);
+// Preserve the order of the default groups.
+$groups = [];
+foreach ($mzfgbTranslatedGroups as $group => $translation) {
+    if (isset($fields[$group])) {
+        $groups[] = $group;
+    }
+}
+
+// $groups = array_keys($fields);
+//sort($groups);
 
 $img = $view['lead_avatar']->getAvatar($lead);
 ?>
